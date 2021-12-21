@@ -1,0 +1,52 @@
+@import "libs/colorset";
+
+/* Color Custom */
+@import "@/sass/mpcs_color_theme.scss";
+
+// scss-docs-start theme-colors-map
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
+) !default;
+// scss-docs-end theme-colors-map
+
+@import "variables";
+@import "~bootstrap/scss/bootstrap";
+
+
+/* components */
+// @import "components/nav";
+// @import "components/list-group";
+// @import "components/button";
+// @import "components/search";
+// @import "components/panel";
+// @import "components/preloader";
+// @import "components/loading";
+// @import "components/form";
+// @import "components/dl";
+// @import "components/dropdown";
+// @import "components/tag-label";
+// @import "components/toast";
+// @import "components/history";
+
+// partials
+@import "partials/header";
+
+/* pages */
+@import "pages/layout";
+@import "pages/login";
+
+/* previews */
+// @import "previews/contents";
+
+
+/* Animations */
+@import "plugins/animate-css/animate.min.css";
+@import "libs/animation";
+@import "libs/utilities";

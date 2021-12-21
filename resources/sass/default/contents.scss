@@ -1,0 +1,137 @@
+@import "./libs/colorset";
+
+/* Color Custom */
+@import "@/sass/mpcs_color_theme.scss";
+
+
+.main-wrapper {
+    h3 {
+        font-family: "MapoFlowerIsland";
+        color: $primary;
+        font-size: 2em;
+        &::before {
+            display: block;
+            height: 40px;
+            margin-bottom: 0.5rem;
+            background-image: url(./images/svgs/tent.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            content: "";
+        }
+    }
+    .main-reservation {
+        .card-title {
+            position: relative;
+            margin-top: -1.75em;
+            margin-bottom: 0;
+            background-color: $white;
+            padding: 0.5em;
+            border-radius: 0.5em;
+            &::before {
+                position: absolute;
+                left: 10px;
+                top: -32px;
+                font-size: 5rem;
+                font-weight: 900;
+                content: attr(data-sitename);
+            }
+        }
+    }
+}
+
+.sub-wrapper {
+    h3 {
+        font-family: "MapoFlowerIsland";
+        color: $primary;
+        font-size: 2em;
+        text-align: center;
+        &::before {
+            display: block;
+            height: 40px;
+            margin-bottom: 0.5rem;
+            background-image: url(./images/svgs/tent.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            content: "";
+        }
+    }
+    h4 {
+        //font-family: "MapoFlowerIsland";
+        color: $success;
+        font-size: 1.5em;
+    }
+}
+
+// 모바일에서 터치시 hover 잔상문제로 hover없이 새로구성
+.booking-site-btns {
+    .button {
+        display: block;
+        width: 100%;
+        border-style: solid;
+        border-width: $border-width;
+        border-radius: $border-radius;
+        outline: none;
+        @include transition(0.3s);
+        &-warning {
+            color: $warning;
+            background-color: $white;
+            border-color: $warning;
+
+            &.active {
+                color: $white;
+                background-color: $warning;
+            }
+        }
+        &-danger {
+            color: $danger;
+            background-color: $white;
+            border-color: $danger;
+            &.active {
+                color: $white;
+                background-color: $danger;
+            }
+        }
+        &-info {
+            color: $info;
+            background-color: $white;
+            border-color: $info;
+            &.active {
+                color: $white;
+                background-color: $info;
+            }
+        }
+        &-primary {
+            color: $primary;
+            background-color: $white;
+            border-color: $primary;
+            &.active {
+                color: $white;
+                background-color: $primary;
+            }
+        }
+
+        &.disabled {
+            opacity: $btn-disabled-opacity;
+            &.active {
+                cursor: not-allowed;
+            }
+        }
+    }
+}
+
+.form-group {
+    &.number-to-korean {
+        position: relative;
+        &::after {
+            z-index: 1;
+            position: absolute;
+            display: inline-block;
+            top: 4px;
+            right: 4px;
+            color: $red;
+            content: attr(data-number);
+        }
+    }
+}

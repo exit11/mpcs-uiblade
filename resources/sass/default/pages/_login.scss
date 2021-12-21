@@ -1,0 +1,20 @@
+/* page : login */
+
+.login-box {
+  height: 100vh;
+  .form-group {
+    position: relative;
+    .form-icon {
+      position: absolute;
+      font-size: 1.5em;
+      top: 0;
+      right: 0.5em;
+      color: transparentize($primary, 0.4);
+    }
+  }
+  .login-logo {
+    img {
+      max-height: 4rem;
+    }
+  }
+}

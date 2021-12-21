@@ -1,0 +1,30 @@
+.search-wrap {
+    .btn-search-expend {
+        &.collapsed {
+            i::before {
+                transform: rotate(0deg);
+            }
+        }
+        i::before {
+            transform: rotate(180deg);
+            transition: all .5s ease;
+        }
+    }
+}
+
+.search-form-wrap {
+    .form-group {
+        margin-bottom: .25rem;
+        label {
+            display: none;
+        }
+        .form-control {
+            //background-color: $gray-100;
+        }
+        &.show-label {
+            label {
+                display: inline-block;
+            }
+        }
+    }
+}

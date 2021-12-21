@@ -1,0 +1,92 @@
+// 보더 라운드
+$enable-rounded: true !default;
+
+// note Body
+//
+// Settings for the `<body>` element.
+$body-bg: $gray-100 !default;
+$body-color: $gray-900 !default;
+
+// note Fonts
+//
+// Font, line-height, and color for body text, headings, and more.
+
+$font-size-base: 0.875rem !default; //14px
+//$font-size-base:              0.75rem !default;  //12px
+
+// note Nav
+
+$navbar-dark-color: rgba($white, 0.85) !default;
+$navbar-dark-hover-color: $white !default;
+$navbar-dark-active-color: $white !default;
+$navbar-dark-disabled-color: rgba($white, 0.25) !default;
+
+$navbar-light-color: rgba($black, 0.5) !default;
+$navbar-light-hover-color: rgba($black, 0.7) !default;
+$navbar-light-active-color: rgba($black, 0.9) !default;
+$navbar-light-disabled-color: rgba($black, 0.3) !default;
+
+// Navbar
+// side default : left
+$navbar-nav-link-padding-x: 0.6rem !default;
+$navbar-height: 57px;
+$sidebar-width: 360px;
+$off-canvas: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+
+$navbar-font-size: 1rem !default; //16px
+
+// Input
+$line-height-base: 1.5 !default;
+$input-btn-padding-y: 0.3rem !default;
+$input-btn-padding-x: 0.75rem !default;
+$input-btn-line-height: $line-height-base !default;
+
+// Form validation
+$form-feedback-valid-color: $success !default;
+$form-feedback-invalid-color: $primary !default;
+
+// tooltip
+$tooltip-max-width: 500px !default;
+
+// Pagination
+$pagination-color: $gray-600 !default;
+$pagination-hover-color: $black !default;
+
+// Modal
+$modal-lg: 960px !default;
+$modal-md: 500px !default;
+$modal-sm: 300px !default;
+
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 768px,
+  md: 992px,
+  lg: 1200px,
+  xl: 1360px,
+) !default;
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+$container-max-widths: (
+  sm: 720px,
+  md: 960px,
+  lg: 1140px,
+  xl: 1300px,
+) !default;
+
+// stylelint-disable function-disallowed-list
+// scss-docs-start aspect-ratios
+$aspect-ratios: (
+  "1x1": 100%,
+  "4x3": calc(3 / 4 * 100%),
+  "16x9": calc(9 / 16 * 100%),
+  "21x9": calc(9 / 21 * 100%),
+  "42x60": calc(60 / 42 * 100%),
+) !default;

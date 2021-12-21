@@ -1,0 +1,44 @@
+//
+// Color system
+//
+
+$white: #fff !default;
+$gray-100: #fafafa !default;
+$gray-200: #f9f8fc !default;
+$gray-300: #ededed !default;
+$gray-400: #cbc8d0 !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default;
+$gray-700: #444 !default;
+$gray-800: #343a40 !default;
+$gray-900: #17141f !default;
+$black: #000 !default;
+
+$blue: #4665a7 !default;
+$indigo: #6610f2 !default;
+$purple: #593196 !default;
+$pink: #e83e8c !default;
+$red: #c30000 !default;
+$orange: #fd7e14 !default;
+$yellow: #efa31d !default;
+$green: #13b955 !default;
+$teal: #20c997 !default;
+$cyan: #759db7 !default;
+
+// scss-docs-start colors-map
+$colors: (
+    "blue": $blue,
+    "indigo": $indigo,
+    "purple": $purple,
+    "pink": $pink,
+    "red": $red,
+    "orange": $orange,
+    "yellow": $yellow,
+    "green": $green,
+    "teal": $teal,
+    "cyan": $cyan,
+    "white": $white,
+    "gray": $gray-600,
+    "gray-dark": $gray-800
+) !default;
+// scss-docs-end colors-map

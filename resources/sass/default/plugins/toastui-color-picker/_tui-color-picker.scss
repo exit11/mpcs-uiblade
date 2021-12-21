@@ -1,0 +1,15 @@
+@import "~tui-color-picker/dist/tui-color-picker.css";
+
+.tui-colorpicker-container {
+    width: 100%;
+} 
+.tui-colorpicker-palette-container {
+    width: 100%;
+    ul {
+        width: 100%;
+    }
+}
+.tui-colorpicker-palette-button {
+    width: 25px;
+    height: 25px;
+}

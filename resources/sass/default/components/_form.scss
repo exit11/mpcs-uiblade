@@ -1,0 +1,24 @@
+.form-group {
+  margin-bottom: 1rem;
+  &.required {
+    > label {
+      position: relative;
+      &::after {
+        position: absolute;
+        display: block;
+        width: 4px;
+        height: 4px;
+        top: 4px;
+        right: -6px;
+        background-color: $red;
+        border-radius: 2px;
+        content: "";
+      }
+    }
+  }
+  &.label-d-none {
+    > label {
+      display: none;
+    }
+  }
+}

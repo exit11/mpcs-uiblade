@@ -1,0 +1,41 @@
+/* load data */
+.load-wrapper {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5000;
+  background-color: rgba($dark, 0.5);
+  transition: all 0.5s linear;
+
+  /* 둥근 스피너*/
+  .loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -30px;
+    margin-left: -30px;
+    border: 8px solid $gray-100;
+    border-radius: 50%;
+    border-top: 8px solid $primary;
+    width: 60px;
+    height: 60px;
+    -webkit-animation: spin 1s linear infinite;
+    safarianimation: spin 1s linear infinite;
+  }
+
+  // .loader {
+  //   position: absolute;
+  //   top: 50%;
+  //   left: 50%;
+  //   margin-top: -30px;
+  //   margin-left: -30px;
+  //   width: 60px;
+  //   height: 60px;
+  //   background-color: $white;
+  //   -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  //   animation: sk-rotateplane 1.2s infinite ease-in-out;
+  // }
+}

@@ -1,0 +1,31 @@
+.header-logo {
+    //font-family: "궁서체";
+    font-size: 2em;
+    font-weight: bolder;
+    line-height: 1em;
+    text-shadow: 0 0 4px $dark;
+    color: $white;
+    margin-bottom: 1rem;
+  }
+  .header-brand {
+    //font-family: $font-family-serif;
+    font-size: 4em;
+    text-shadow: 0 0 4px $dark;
+    color: $white;
+    line-height: 1em;
+  }
+  .header-slogun {
+    //font-family: $font-family-serif;
+    font-size: 1.5em;
+    text-shadow: 0 0 4px $dark;
+    color: $white;
+    margin-bottom: 0;
+  }
+  .header-copyright {
+    font-size: 1.3em;
+    text-shadow: 0 0 4px $dark;
+    color: $white;
+    text-align: center;
+    line-height: 1.2em;
+  }
+  

@@ -1,0 +1,36 @@
+{
+    "name": "exit11/ui-blade",
+    "description": "mpcs core : UI blade extention",
+    "type": "library",
+    "authors": [
+        {
+            "name": "HWAJUN LEE",
+            "email": "ezrock@naver.com"
+        }
+    ],
+    "require": {
+        "mpcs-ui/bootstrap5": "~0.1.0|dev-master",
+        "mpcs/core": "~0.1.0|dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Exit11\\UiBlade\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Exit11\\UiBlade\\UiBladeServiceProvider",
+                "Exit11\\UiBlade\\UiBladeAuthServiceProvider",
+                "Exit11\\UiBlade\\UiBladeEventServiceProvider",
+                "Exit11\\UiBlade\\UiBladeBroadcastServiceProvider"
+            ],
+            "aliases": {
+                "UiBlade": "Exit11\\UiBlade\\Facades\\UiBlade"
+            }
+        }
+    }
+}

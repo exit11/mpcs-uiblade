@@ -1,0 +1,109 @@
+.nav-header {
+  display: flex;
+  height: $navbar-height;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  transition: $off-canvas;
+
+  &--main {
+    display: flex;
+    justify-items: start;
+    align-items: center;
+  }
+
+  &--nav {
+    display: flex;
+    flex-direction: row;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    .nav-header--link {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: $white;
+      text-decoration: none;
+      border-radius: $border-radius;
+      &.active {
+        background-color: rgba($black, .3);
+      }
+    }
+  }
+
+  &--sub {
+    display: flex;
+    justify-items: start;
+    list-style: none;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    .nav-item {
+      margin-left: 0.25em;
+      margin-right: 0.25em;
+    }
+  }
+
+  &--toggler {
+    display: block;
+    padding: 0;
+    border: 0;
+    outline: none;
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+    }
+
+    .icon-bar {
+      display: block;
+      position: relative;
+      width: 24px;
+      height: 2px;
+      border-radius: 1px;
+      background-color: #fff;
+
+      + .icon-bar {
+        margin-top: 4px;
+      }
+
+      &.bar1 {
+        top: 0;
+        outline: 1px solid transparent;
+        animation: topbar-back 500ms 0s;
+        animation-fill-mode: forwards;
+      }
+
+      &.bar2 {
+        outline: 1px solid transparent;
+        opacity: 1;
+      }
+
+      &.bar3 {
+        bottom: 0;
+        outline: 1px solid transparent;
+        animation: bottombar-back 500ms 0s;
+        animation-fill-mode: forwards;
+      }
+    }
+  }
+
+  .btn-nav-icon {
+    padding-top: 3px !important;
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .btn-nav-user {
+    background-color: rgba(255, 255, 255, 0.25);
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+}
+
+.nav-header,
+.offcanvas-nav {
+  .brand-link {
+    img {
+      height: 2.4em;
+    }
+  }
+}

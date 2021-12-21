@@ -1,0 +1,92 @@
+.btn-group > .btn-check:checked + .btn,
+.btn-group > .btn-check:focus + .btn,
+.btn-group > .btn:hover,
+.btn-group > .btn:focus,
+.btn-group > .btn:active,
+.btn-group > .btn.active,
+.btn-group-vertical > .btn-check:checked + .btn,
+.btn-group-vertical > .btn-check:focus + .btn,
+.btn-group-vertical > .btn:hover,
+.btn-group-vertical > .btn:focus,
+.btn-group-vertical > .btn:active,
+.btn-group-vertical > .btn.active {
+  z-index: unset;
+}
+a.not-underline {
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 2.1rem;
+  height: 2.1rem;
+
+  &.btn-sm {
+    width: 1.725rem;
+    height: 1.725rem;
+  }
+
+  .mdi {
+    font-size: 1.4em;
+    margin-top: -2px;
+  }
+}
+
+.btn-cursor-default {
+  cursor: default !important;
+}
+
+.btn-group-toggle {
+  //display: flex;
+  margin-bottom: 0.25rem;
+  .btn {
+    //flex: 1;
+    &.focus,
+    &:focus {
+      box-shadow: none !important;
+    }
+    .icon-check {
+      opacity: 0.1;
+      transition: all 0.5s;
+    }
+    &.active {
+      .icon-check {
+        opacity: 1;
+        transition: all 0.5s;
+      }
+    }
+  }
+}
+
+.btn-search-expend {
+  &.collapsed {
+    .fas::before {
+      content: "\F00E";
+    }
+  }
+  .fas::before {
+    content: "\f010";
+  }
+}
+
+.btn-arrange-checked.duplicated {
+  position: relative;
+  &::after {
+    z-index: 1;
+    position: absolute;
+    display: block;
+    width: 8px;
+    height: 8px;
+    top: -3px;
+    right: -3px;
+    background-color: $red;
+    border-radius: 4px;
+    content: "";
+  }
+}
