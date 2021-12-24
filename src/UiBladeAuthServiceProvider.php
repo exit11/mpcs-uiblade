@@ -17,6 +17,7 @@ class UiBladeAuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 
+        Models\Menu::class => Policies\MenuPolicy::class,
     ];
 
     /**

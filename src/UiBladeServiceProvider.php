@@ -7,6 +7,20 @@ use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 
 class UiBladeServiceProvider extends ServiceProvider
 {
+
+    /**
+     * @var array
+     */
+    protected $commands = [
+        // Console\InstallCommand::class,
+        Commands\SeedCommand::class,
+    ];
+
+    /**
+     * Bootstrap the application services.
+     *
+     * @return void
+     */
     public function boot()
     {
 
@@ -15,6 +29,7 @@ class UiBladeServiceProvider extends ServiceProvider
 
         /* 콘솔에서 vendor:publish 가동시 설치 파일 */
         if ($this->app->runningInConsole()) {
+            $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
             $this->publishes([__DIR__ . '/../config' => config_path()], 'config');
         }
 
@@ -34,6 +49,19 @@ class UiBladeServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // 
+        $this->commands($this->commands);
+        $this->registerEloquentFactoriesFrom(__DIR__ . '/../database/factories');
+        $this->app->bind('Exit11\UiBlade\Repositories\MenuRepositoryInterface', 'Exit11\UiBlade\Repositories\MenuRepository');
+    }
+
+    /**
+     * Register factories.
+     *
+     * @param  string  $path
+     * @return void
+     */
+    protected function registerEloquentFactoriesFrom($path)
+    {
+        $this->app->make(EloquentFactory::class)->load($path);
     }
 }

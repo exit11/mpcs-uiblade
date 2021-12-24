@@ -2,6 +2,9 @@
 
 return [
 
+    // route prefix
+    'ui_url_prefix' => 'official',
+
     // theme
     'ui_theme' => 'default',
 

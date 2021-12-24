@@ -24,7 +24,8 @@
             </nav>
 
             <div class="text-center">
-                <div class="header-logo wow animate__animated animate__fadeInDown">
+                ...
+                {{-- <div class="header-logo wow animate__animated animate__fadeInDown">
                     五都<br />二村
                 </div>
                 <p class="header-slogun wow animate__animated animate__fadeInDown">
@@ -32,7 +33,7 @@
                 </p>
                 <h1 class="header-brand wow animate__animated animate__zoomIn">
                     오도이촌 <br /><small>캠핑장</small>
-                </h1>
+                </h1> --}}
             </div>
             <div class="header-copyright py-2 wow animate__animated animate__fadeInUp">
                 @if (config('mpcsuiblade.seo.phone'))
