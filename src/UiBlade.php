@@ -2,8 +2,24 @@
 
 namespace Exit11\UiBlade;
 
+use MpcsUi\Bootstrap5\Facades\Bootstrap5;
+use Mpcs\Core\Facades\Core;
+
+use Exit11\UiBlade\Models\Menu;
+
 class UiBlade
 {
+
+    /**
+     * getMenu
+     *
+     * @return void
+     */
+    public static function getMenu()
+    {
+        $menus = Core::dataSelect('menus', ['_vendor' => 'Exit11\UiBlade', '_withs' => ['allChildren'], '_scopes' => ['nullParent'], 'is_visible' => true]);
+        return $menus;
+    }
 
     /**
      * menuTitle
@@ -36,6 +52,26 @@ class UiBlade
     {
         $viewTemplate = config('mpcsuiblade.ui_theme') ?? 'default';
         return 'mpcs-uiblade::themes.' . $viewTemplate . '.' . $view;
+    }
+
+    /**
+     * getMenuMaxDepth
+     *
+     * @return int
+     */
+    public static function getMenuMaxDepth()
+    {
+        return config('mpcsarticle.menu_max_depth') ?? 4;
+    }
+
+    /**
+     * noImage
+     *
+     * @return void
+     */
+    public static function noImage()
+    {
+        return Bootstrap5::noImage();
     }
 
     /**

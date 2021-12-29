@@ -1,12 +1,12 @@
 <?php
 
 namespace Exit11\UiBlade\Services;
- 
+
 use Mpcs\Core\Facades\Core;
 use Mpcs\Core\Traits\ServiceTrait;
 
 use Exit11\UiBlade\Repositories\MenuRepositoryInterface as RepositoryInterface;
- 
+
 class MenuService
 {
     use ServiceTrait;
@@ -26,7 +26,7 @@ class MenuService
     {
         $this->repository = $repository;
     }
-    
+
     /**
      * index
      *
@@ -36,7 +36,7 @@ class MenuService
     {
         return $this->repository->all();
     }
-        
+
     /**
      * edit
      *
@@ -47,7 +47,7 @@ class MenuService
     {
         return $this->repository->get($model);
     }
-    
+
     /**
      * show
      *
@@ -58,7 +58,7 @@ class MenuService
     {
         return $this->repository->get($model);
     }
-    
+
     /**
      * store
      *
@@ -71,8 +71,8 @@ class MenuService
         if ($model) {
             return $model;
         }
-        
-        Core::crudAbort();   
+
+        Core::crudAbort();
     }
 
     /**
@@ -91,9 +91,9 @@ class MenuService
 
         if ($model) {
             return $model;
-        }   
-        
-        Core::crudAbort();        
+        }
+
+        Core::crudAbort();
     }
 
     /**
@@ -109,6 +109,24 @@ class MenuService
                 'id' => $id,
             ];
         }
+        Core::crudAbort();
+    }
+
+    /**
+     * saveOrder
+     *
+     * @return void
+     */
+    public function saveOrder()
+    {
+        if ($this->repository->saveOrder()) {
+            return [
+                'title' => "순서 저장 성공",
+                'message' => "메뉴 순서가 저장되었습니다.",
+                'status' => 200,
+            ];
+        }
+
         Core::crudAbort();
     }
 }

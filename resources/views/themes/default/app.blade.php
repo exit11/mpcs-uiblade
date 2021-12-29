@@ -77,9 +77,8 @@
 
             <nav class="navbar sticky-top navbar-light d-none d-lg-flex border-bottom bg-white">
                 <div class="container-fluid">
-                    <ul class="nav justify-content-center w-100">
-                        @component(UiBlade::theme('components.item_nav'), ['menus' => UiBlade::getMenuData()])
-                        @endcomponent
+                    <ul class="global-nav nav justify-content-center w-100">
+                        @each(UiBlade::theme('partials.item_nav'), UiBlade::getMenu(), 'menu')
                     </ul>
                 </div>
             </nav>
@@ -104,9 +103,8 @@
 
         <div class="offcanvas-body">
             <!-- Offcanvas navbar links -->
-            <ul class="nav flex-column">
-                @component(UiBlade::theme('components.item_nav'), ['menus' => UiBlade::getMenuData()])
-                @endcomponent
+            <ul class="offcanvas-nav nav flex-column">
+                @each(UiBlade::theme('partials.item_nav'), UiBlade::getMenu(), 'menu')
             </ul>
         </div>
     </div>

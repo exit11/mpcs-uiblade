@@ -16,7 +16,7 @@ class MenuController extends Controller
 {
     use ControllerTrait;
     protected $service;
-    
+
     public function __construct(Service $service)
     {
         $this->service = $service;
@@ -32,7 +32,7 @@ class MenuController extends Controller
     {
         return new ResourceCollection($this->service->index());
     }
-    
+
     /**
      * edit
      *
@@ -43,7 +43,7 @@ class MenuController extends Controller
     {
         return new Resource($this->service->edit($menu));
     }
-        
+
     /**
      * show
      *
@@ -54,7 +54,7 @@ class MenuController extends Controller
     {
         return new Resource($this->service->show($menu));
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -65,7 +65,7 @@ class MenuController extends Controller
     {
         return new Resource($this->service->store());
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -87,5 +87,16 @@ class MenuController extends Controller
     public function destroy(Model $menu)
     {
         return Core::responseJson($this->service->destroy($menu));
+    }
+
+    /**
+     * saveOrder
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function saveOrder(Request $request)
+    {
+        return Core::responseJson($this->service->saveOrder());
     }
 }

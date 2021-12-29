@@ -24,6 +24,7 @@ Route::group([
     'namespace'     => 'Exit11\UiBlade\Http\Controllers\Blade',
     'middleware'    => config('mpcs.route.middleware'),
 ], function (Router $router) {
+    $router->patch('menus/save_order', 'MenuController@saveOrder')->name('menus.save_order');
     $router->get('menus/list', 'MenuController@list')->name('menus.list');
     $router->resource('menus', 'MenuController')->names('menus')->except(['destroy']);
 });

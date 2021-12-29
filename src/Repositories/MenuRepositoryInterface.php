@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Exit11\UiBlade\Repositories;
 
@@ -17,4 +17,6 @@ interface MenuRepositoryInterface
     public function delete($model);
 
     public function get($model);
+
+    public function saveOrder();
 }

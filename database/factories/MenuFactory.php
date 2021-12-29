@@ -9,7 +9,7 @@ $factory->define(Model::class, function (Faker $faker) {
     $faker = \Faker\Factory::create('ko_kr');
     //$parent = $faker->boolean(50) ? factory(Model::class)->create() : null;
     return [
-        //'parent_id' => $parent ? $parent->id : null,
+        'parent_id' => null,
         'order' => function () {
             $max = Model::all()->max('order');
             return $max + 1;

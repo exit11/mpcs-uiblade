@@ -17,9 +17,18 @@ class MenuRequest extends FormRequest
             return $rules;
         }
 
+        $id = $this->menu->id ?? "";
+        $parentId = request()->parent_id ?? $this->parant_id;
+
         $rules = [
-            'POST' => [],
-            'PUT' => [],
+            'POST' => [
+                'name' => 'required|max:255',
+                'description' => 'max:512',
+            ],
+            'PUT' => [
+                'name' => 'sometimes|required|max:255',
+                'description' => 'max:512',
+            ],
         ];
 
         return $rules[$this->method()] ?? [];

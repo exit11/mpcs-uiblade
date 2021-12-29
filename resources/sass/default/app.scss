@@ -21,7 +21,8 @@ $theme-colors: (
 
 
 /* components */
-// @import "components/nav";
+@import "components/nav";
+@import "components/dropdown";
 // @import "components/list-group";
 // @import "components/button";
 // @import "components/search";
@@ -30,7 +31,6 @@ $theme-colors: (
 // @import "components/loading";
 // @import "components/form";
 // @import "components/dl";
-// @import "components/dropdown";
 // @import "components/tag-label";
 // @import "components/toast";
 // @import "components/history";
