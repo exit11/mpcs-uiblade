@@ -23,6 +23,8 @@ class CreateMenusTable extends Migration
             $table->string('url', 512)->nullable();
             $table->boolean('target')->default(0);
             $table->string('background_image')->nullable();
+            $table->dateTime('period_from');
+            $table->dateTime('period_to')->nullable();
             $table->boolean('is_visible')->default(0);
             $table->unsignedTinyInteger('depth')->default(1);
         });

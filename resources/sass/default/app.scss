@@ -23,17 +23,17 @@ $theme-colors: (
 /* components */
 @import "components/nav";
 @import "components/dropdown";
+@import "components/loading";
+@import "components/history";
 // @import "components/list-group";
 // @import "components/button";
 // @import "components/search";
 // @import "components/panel";
 // @import "components/preloader";
-// @import "components/loading";
 // @import "components/form";
 // @import "components/dl";
 // @import "components/tag-label";
 // @import "components/toast";
-// @import "components/history";
 
 // partials
 @import "partials/header";
@@ -42,11 +42,10 @@ $theme-colors: (
 @import "pages/layout";
 @import "pages/login";
 
-/* previews */
-// @import "previews/contents";
-
 
 /* Animations */
 @import "plugins/animate-css/animate.min.css";
+@import "plugins/toastui-editor/viewer.scss";
 @import "libs/animation";
 @import "libs/utilities";
+@import "libs/mdi";

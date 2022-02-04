@@ -4,7 +4,7 @@ namespace Exit11\UiBlade\Repositories;
 
 use Exception;
 use Illuminate\Support\Facades\DB;
-use Mpcs\Core\Facades\Core;
+use MpcsUi\Bootstrap5\Facades\Bootstrap5;
 use Mpcs\Core\Traits\RepositoryTrait;
 
 use Exit11\UiBlade\Models\Menu as Model;
@@ -67,10 +67,28 @@ class MenuRepository implements MenuRepositoryInterface
             $this->model->url = $this->request['url'] ?? null;
             $this->model->icon = $this->request['icon'] ?? null;
             $this->model->target = $this->request['target'];
-            $this->model->background_image = $this->request['background_image'] ?? null;
             $this->model->is_visible = $this->request['is_visible'] ?? false;
+            $this->model->period_from = $this->request['period_from'];
+            $this->model->period_to = $this->request['period_to'] ?? null;
             $this->model->order = $order;
             $this->model->depth = $depth;
+
+            /* 이미지 Base64 방식 저장 */
+            $requestImage = $this->request['background_image'] ?? null;
+            if ($requestImage) {
+                if (!empty($requestImage)) {
+                    if (substr($requestImage, 0, 10) === "data:image") {
+                        $base64ToFile = Bootstrap5::base64ToFile($requestImage, $this->model->upload_disk, $this->model->image_root_dir);
+                        if ($base64ToFile) {
+                            $this->model->background_image = $base64ToFile;
+                        }
+                    } else {
+                        $this->model->background_image = $requestImage;
+                    }
+                    Bootstrap5::generateThumb($this->model->image_root_dir, $this->model->background_image);
+                }
+            }
+
             $this->model->save();
 
             DB::commit();
@@ -92,7 +110,6 @@ class MenuRepository implements MenuRepositoryInterface
 
             // 기본 정보 저장
             $parentId = $this->request['parent_id'] ?? null;
-            $order = $this->model::where('parent_id', $parentId)->max('order') + 1;
 
             if ($parentId) {
                 $depth = $this->model::where('id', $parentId)->value('depth');
@@ -112,10 +129,25 @@ class MenuRepository implements MenuRepositoryInterface
             $model->url = $this->request['url'] ?? null;
             $model->icon = $this->request['icon'] ?? null;
             $model->target = $this->request['target'];
-            $model->background_image = $this->request['background_image'] ?? null;
             $model->is_visible = $this->request['is_visible'] ?? false;
-            $model->order = $order;
+            $model->period_from = $this->request['period_from'];
+            $model->period_to = $this->request['period_to'] ?? null;
             $model->depth = $depth;
+
+            /* 이미지 Base64 방식 저장 */
+            $requestImage = $this->request['background_image'] ?? $model->background_image;
+            if ($requestImage) {
+                if (substr($requestImage, 0, 10) === "data:image") {
+                    $base64ToFile = Bootstrap5::base64ToFile($requestImage, $model->upload_disk, $model->image_root_dir);
+                    if ($base64ToFile) {
+                        $model->background_image = $base64ToFile;
+                    }
+                } else {
+                    $model->background_image = $requestImage;
+                }
+                Bootstrap5::generateThumb($model->image_root_dir, $model->background_image);
+            }
+
             $model->save();
 
             DB::commit();

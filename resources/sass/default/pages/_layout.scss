@@ -14,6 +14,7 @@
           max-width: 35vw;
       }
       &__container {
+          height: 100%;
           background-color: rgba($primary, 0.5);
           background-position: center center;
           background-repeat: no-repeat;
@@ -40,12 +41,12 @@
       flex-basis: 0;
       flex-grow: 1;
       max-width: 100%;
-      .container-fluid {
-          @include media-breakpoint-up(lg) {
-              padding-left: 4vw;
-              padding-right: 4vw;
-          }
-      }
+  }
+
+  &.main {
+    .page-wrapper--header {
+        height: 100vh;
+    }
   }
 
   @include media-breakpoint-up(lg) {

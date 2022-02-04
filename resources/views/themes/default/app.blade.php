@@ -29,9 +29,10 @@
     <meta name="twitter:creator" content="{{ config('mpcsuiblade.seo.title') }}">
     <meta name="twitter:image" content="@yield('seo_image', url('/').config('mpcsuiblade.seo.image'))">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ config('mpcsuiblade.favicon.apple_touch_icon') }}">
+    <link rel="icon" type="image/png" sizes="144x144" href="{{ config('mpcsuiblade.favicon.icon_144') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ config('mpcsuiblade.favicon.icon_96') }}">
+    <link rel="icon" type="image/png" sizes="48x48" href="{{ config('mpcsuiblade.favicon.icon_48') }}">
 
     <title>@yield('app_title', '') - {{ config('mpcsuiblade.seo.title') }}</title>
 
@@ -47,12 +48,14 @@
     <!-- // After APP CSS -->
 
     <script>
-        function MPCSUI() {}
-        MPCSUI.token = "{{ csrf_token() }}"
+        function WEBAPP_CONFIG() {}
+        WEBAPP_CONFIG.token = "{{ csrf_token() }}"
+        WEBAPP_CONFIG.currentLocale = "{{ app()->getLocale() }}";
+        WEBAPP_CONFIG.openApiPrefix = "/{{ Core::getUrlPrefix('open_api') }}";
 
         @if (config('app.debug'))
             {{-- 개발 디버깅용 변수 --}}
-            MPCSUI.appDebug = true;
+            WEBAPP_CONFIG.appDebug = true;
         @endif
     </script>
 
@@ -68,13 +71,13 @@
     {{-- header, modal 레이어 팝업 --}}
     @yield('app_notification')
 
-    <div id="pageWrapper" class="page-wrapper pb-5">
+    <div id="pageWrapper"
+        class="page-wrapper pb-5 {{ Route::current()->getName() == Core::getConfig('ui_url_prefix', 'mpcsuiblade') . 'index' ? 'main' : '' }}">
 
         {{-- HEADER --}}
         @include(UiBlade::theme('partials.header'))
 
         <div class="page-wrapper--main">
-
             <nav class="navbar sticky-top navbar-light d-none d-lg-flex border-bottom bg-white">
                 <div class="container-fluid">
                     <ul class="global-nav nav justify-content-center w-100">
@@ -82,9 +85,7 @@
                     </ul>
                 </div>
             </nav>
-
-            <main
-                class="container-fluid py-3 {{ \Route::current()->getName() == 'official.index' ? 'main-wrapper' : 'sub-wrapper' }}">
+            <main class="container position-relative py-3 px-lg-4">
                 @yield('app_content')
             </main>
         </div>
@@ -92,7 +93,8 @@
     </div>
 
     {{-- 오버 캔버스 --}}
-    <div class="offcanvas-nav offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav">
+    <div class="
+                offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav">
         <div class="offcanvas-header bg-primary align-items-center">
             <a href="http://39.113.249.123:9001/gpis" class="brand-link">
                 <img src="/vendor/mpcs-ui/bootstrap5/images/header_logo.png" alt="Header Logo"
@@ -104,7 +106,7 @@
         <div class="offcanvas-body">
             <!-- Offcanvas navbar links -->
             <ul class="offcanvas-nav nav flex-column">
-                @each(UiBlade::theme('partials.item_nav'), UiBlade::getMenu(), 'menu')
+                @each(UiBlade::theme('partials.item_offcanvas'), UiBlade::getMenu(), 'menu')
             </ul>
         </div>
     </div>
@@ -117,7 +119,7 @@
     @stack('before_app_scripts')
     <!-- // Before APP SCRIPTS -->
 
-    <script src="{{ mix('/vendor/mpcs-ui/bootstrap5/js/app.js') }}"></script>
+    <script src="{{ mix('/vendor/exit11/ui-blade/css/default/app.js') }}"></script>
 
     <!-- After APP SCRIPTS -->
     @stack('after_app_scripts')
@@ -144,7 +146,6 @@
             dataLayer.push(arguments);
         }
         gtag('js', new Date());
-
         gtag('config', 'UA-180690677-1');
     </script>
 

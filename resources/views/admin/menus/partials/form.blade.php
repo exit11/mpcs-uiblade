@@ -11,8 +11,19 @@
     </div>
 </div>
 
+<div class="form-group mb-3">
+    <label>{{ Str::ucfirst(trans('mpcs-uiblade::word.attr.visible_period')) }}</label>
+    <div class="input-group">
+        <input data-type="data-picker-datetime" type="text" name="period_from" class="form-control"
+            placeholder="{{ trans('mpcs-uiblade::word.attr.period_from') }}">
+        <span class="input-group-text">~</span>
+        <input data-type="data-picker-datetime" type="text" name="period_to" class="form-control"
+            placeholder="{{ trans('mpcs-uiblade::word.attr.period_to') }}">
+    </div>
+</div>
+
 <div class="form-group breadcrumb-wrap">
-    <label>상위 카테고리</label>
+    <label>{{ trans('mpcs-uiblade::word.attr.parent_menu') }}</label>
     <div class="form-control">
     </div>
 </div>
@@ -21,44 +32,45 @@
 
 {!! Form::text('description', Str::ucfirst(trans('ui-bootstrap5::word.description')))->placeholder(Str::ucfirst(trans('ui-bootstrap5::word.description'))) !!}
 
-{!! Form::text('url', trans('mpcs-article::word.attr.url'))->placeholder(trans('mpcs-article::word.attr.url'))->type('url') !!}
+{!! Form::text('url', trans('mpcs-uiblade::word.attr.url'))->placeholder(trans('mpcs-uiblade::word.attr.url'))->type('url') !!}
 
 <div class="form-group row">
-    <label>{{ Str::title(trans('mpcs-article::word.is_target_title')) }} </label>
+    <label>{{ Str::title(trans('mpcs-uiblade::word.is_target_title')) }} </label>
     <div class="btn-group w-100" role="group">
         <input type="radio" class="btn-check" name="target" id="{{ $idPrefix }}target_self" value="_self"
             autocomplete="off" checked>
         <label class="btn btn-outline-dark" for="{{ $idPrefix }}target_self">
             <i class="mdi mdi-check"></i>
-            {{ Str::title(trans('mpcs-article::word.target_self')) }}
+            {{ Str::title(trans('mpcs-uiblade::word.target_self')) }}
         </label>
         <input type="radio" class="btn-check" name="target" id="{{ $idPrefix }}target_blank" value="_blank"
             autocomplete="off">
         <label class="btn btn-outline-dark" for="{{ $idPrefix }}target_blank">
             <i class="mdi mdi-check"></i>
-            {{ Str::title(trans('mpcs-article::word.target_blank')) }}
+            {{ Str::title(trans('mpcs-uiblade::word.target_blank')) }}
         </label>
     </div>
 </div>
 
 <div class="form-group">
     <label for="image" class="">
-        {{ trans('mpcs-article::word.attr.image') }}
+        {{ trans('mpcs-uiblade::word.attr.background_image') }}
         <button type="button" class="btn p-0" data-bs-container="body" data-bs-toggle="popover"
-            data-bs-placement="top" title="이미지 규격" data-bs-content="420px * 600px 이미지 사이즈에 최적화 되어 있습니다.">
+            data-bs-placement="top" title="{{ trans('mpcs-uiblade::word.image_size') }}"
+            data-bs-content="{{ Str::ucfirst(trans('mpcs-uiblade::word.image_size_desc', ['width' => '400px', 'height' => '620px'])) }}">
             <i class="mdi mdi-information"></i>
         </button>
     </label>
     <div data-type="image-upload">
-        <div class="ratio ratio-42x60 mx-auto mb-1" style="max-width: 420px;">
-            <img src="" class="upload-image" data-default-src="{{ Article::noImage() }}"
+        <div class="mx-auto mb-1">
+            <img src="" class="upload-image img-fluid" data-default-src="{{ UiBlade::noImage() }}"
                 data-crud-edit-name="image_file_url" data-crud-edit-type="image">
         </div>
         <input type="file" class="d-none" accept=".png,.jpg,.gif" />
-        <input type="hidden" name="image" />
+        <input type="hidden" name="background_image" />
         <button type="button" class="btn btn-info align-middle" style="width: 100%" title="">
             <i class="mdi mdi-cloud-upload me-1"></i>
-            파일선택
+            {{ Str::title(trans('mpcs-uiblade::word.choose_a_file')) }}
         </button>
     </div>
 </div>

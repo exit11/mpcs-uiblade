@@ -4,6 +4,8 @@ namespace Exit11\UiBlade;
 
 use MpcsUi\Bootstrap5\Facades\Bootstrap5;
 use Mpcs\Core\Facades\Core;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 
 use Exit11\UiBlade\Models\Menu;
 
@@ -52,6 +54,38 @@ class UiBlade
     {
         $viewTemplate = config('mpcsuiblade.ui_theme') ?? 'default';
         return 'mpcs-uiblade::themes.' . $viewTemplate . '.' . $view;
+    }
+
+    /**
+     * ramdomHeaderImage
+     *
+     * @return void
+     */
+    public static function ramdomHeaderImage()
+    {
+        $images = Storage::files('public/headers');
+        if (count($images) > 0) {
+            $image = $images[array_rand($images)];
+            return Storage::url($image);
+        } else {
+            return config('mpcsuiblade.header_image');
+        }
+    }
+
+    /**
+     * setHeaderImage
+     *
+     * @return void
+     */
+    public static function setHeaderImage()
+    {
+        $segment = request()->segment(1) . '/' . request('any');
+        $menu = Menu::where('url', 'like', '/' . $segment . '%')->first();
+        if ($menu) {
+            return $menu->background_image ? $menu->image_file_url : UiBlade::ramdomHeaderImage();
+        } else {
+            return UiBlade::ramdomHeaderImage();
+        }
     }
 
     /**

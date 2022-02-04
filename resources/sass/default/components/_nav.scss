@@ -21,3 +21,24 @@
     }
   } 
 }
+
+.offcanvas {
+  .brand-link {
+    img {
+      max-height: 2rem;
+    }
+  }
+  .offcanvas-nav {
+    .btn-children:not(.collapsed) {
+      opacity: 0.2;
+    }
+    li {
+      background-color: $white;
+    }
+    ul {
+      list-style: none;
+      background-color: rgba($primary,0.025);
+    }
+  }
+
+}

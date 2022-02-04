@@ -64,62 +64,6 @@
     }
 }
 
-// 모바일에서 터치시 hover 잔상문제로 hover없이 새로구성
-.booking-site-btns {
-    .button {
-        display: block;
-        width: 100%;
-        border-style: solid;
-        border-width: $border-width;
-        border-radius: $border-radius;
-        outline: none;
-        @include transition(0.3s);
-        &-warning {
-            color: $warning;
-            background-color: $white;
-            border-color: $warning;
-
-            &.active {
-                color: $white;
-                background-color: $warning;
-            }
-        }
-        &-danger {
-            color: $danger;
-            background-color: $white;
-            border-color: $danger;
-            &.active {
-                color: $white;
-                background-color: $danger;
-            }
-        }
-        &-info {
-            color: $info;
-            background-color: $white;
-            border-color: $info;
-            &.active {
-                color: $white;
-                background-color: $info;
-            }
-        }
-        &-primary {
-            color: $primary;
-            background-color: $white;
-            border-color: $primary;
-            &.active {
-                color: $white;
-                background-color: $primary;
-            }
-        }
-
-        &.disabled {
-            opacity: $btn-disabled-opacity;
-            &.active {
-                cursor: not-allowed;
-            }
-        }
-    }
-}
 
 .form-group {
     &.number-to-korean {

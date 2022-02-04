@@ -1,0 +1,27 @@
+<article class="article-table-wrapper">
+    <header>
+        <h1>{{category.name}}</h1>
+        <p class="description">{{category.description}}</p>
+    </header>
+    <div class="border rounded">
+        <table class="table table-borderless table-hover align-middle mb-0 w-100">
+            <caption class="visually-hidden">{{category.name}} 목록표</caption>
+            <thead class="table-primary">
+                <tr class="d-none d-md-table-row border-bottom">
+                    <th class="text-center min-width-rem-4 d-none d-md-table-cell">ID</th>
+                    <th>제목</th>
+                    <th class="text-center min-width-rem-7">공개일</th>
+                </tr>
+            </thead>
+            <tbody class="data-wrapper bg-white">
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mt-3">
+        <button type="button" class="btn btn-primary btn-more">
+            <i class="mdi mdi-dots-horizontal"></i>
+            더보기
+        </button>
+    </div>
+</article>

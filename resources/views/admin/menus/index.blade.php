@@ -8,11 +8,8 @@
 
 
 {{-- 검색폼 영역 --}}
-@section('crud_search')
-    @component(Bootstrap5::theme('components.aside_crud_search'))
-        @include(UiBlade::admin_view('menus.partials.search'))
-    @endcomponent
-@endsection
+{{-- @section('crud_search')
+@endsection --}}
 
 
 {{-- 헤더 버튼 그룹 --}}
@@ -31,17 +28,21 @@
 {{-- CRUD 모달 폼 영역 --}}
 @section('crud_form')
     {{-- 생성 --}}
-    @component(Bootstrap5::theme('components.modal_crud_create'))
+    @component(Bootstrap5::theme('components.modal_crud_create'), ['modalSize' => 'modal-md'])
         {!! Form::open()->idPrefix('create_') !!}
         @include(UiBlade::admin_view('menus.partials.form'), ['idPrefix' => 'create_'])
         {!! Form::close() !!}
     @endcomponent
 
     {{-- 수정 --}}
-    @component(Bootstrap5::theme('components.modal_crud_edit'))
+    @component(Bootstrap5::theme('components.modal_crud_edit'), ['modalSize' => 'modal-md'])
         {!! Form::open()->idPrefix('edit_') !!}
         @include(UiBlade::admin_view('menus.partials.form'), ['idPrefix' => 'edit_'])
         {!! Form::close() !!}
+    @endcomponent
+
+    {{-- 삭제 --}}
+    @component(Bootstrap5::theme('components.modal_crud_delete'))
     @endcomponent
 
 @endsection

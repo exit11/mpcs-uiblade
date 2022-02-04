@@ -1,0 +1,21 @@
+
+{{#each datas}}
+    <tr class="border-bottom d-block d-md-table-row">
+        <td class="text-md-center d-none d-md-table-cell py-1">
+            <small>
+                {{id}}
+            </small>
+        </td>
+        <td class="text-start d-block d-md-table-cell py-1">
+            <a class="btn text-start" href="/{{../root}}/view/{{id}}/{{slug}}">
+                {{title}}
+            </a>
+        </td>
+        <td class="text-end text-md-center d-block d-md-table-cell py-1">
+            <small>
+                {{dateFormat released_at format='YYYY-MM-DD'}}
+            </small>
+        </td>
+        
+    </tr>
+{{/each}}

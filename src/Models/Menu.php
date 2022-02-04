@@ -2,11 +2,12 @@
 
 namespace Exit11\UiBlade\Models;
 
+use Exit11\UiBlade\Facades\UiBlade as Facade;
 use Illuminate\Database\Eloquent\Model;
-use Mpcs\Core\Facades\Core;
 use Mpcs\Core\Traits\ModelTrait;
 use MpcsUi\Bootstrap5\Traits\NestedSortableTrait;
-use Exit11\UiBlade\Facades\UiBlade;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class Menu extends Model
 {
@@ -15,8 +16,14 @@ class Menu extends Model
     protected $table = 'menus';
     public $timestamps = false;
     protected $guarded = ['id'];
+    protected $dates = ['created_at', 'updated_at', 'period_from', 'period_to'];
     protected static $m_params = [
-        'default_load_relations' => ['allParent', 'allChildren']
+        'default_load_relations' => ['allParent', 'allChildren'],
+        'column_maps' => [
+            // date : {컬럼명}
+            'from' => 'created_at',
+            'to' => 'created_at',
+        ]
     ];
     // $sortable 정의시 정렬기능을 제공할 필드는 필수 기입
     public $sortable = ['order'];
@@ -24,8 +31,28 @@ class Menu extends Model
         'order' => 'asc',
     ];
 
+    protected $casts = [
+        'target' => 'boolean',
+        'is_visible' => 'boolean',
+        'created_at' => 'datetime:Y-m-d H:i',
+        'updated_at' => 'datetime:Y-m-d H:i',
+        'period_from' => 'datetime:Y-m-d H:i',
+        'period_to' => 'datetime:Y-m-d H:i',
+    ];
+
     // 메뉴 깊이
     public static $maxDepth;
+
+    private $uploadDisk;
+    private $imageRootDir;
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->uploadDisk = Storage::disk('upload');
+        $this->imageRootDir = 'menus';
+    }
 
     /**
      * boot
@@ -37,7 +64,7 @@ class Menu extends Model
         parent::boot();
         static::setMemberParams(self::$m_params);
 
-        self::$maxDepth = UiBlade::getMenuMaxDepth();
+        self::$maxDepth = Facade::getMenuMaxDepth();
     }
 
     /**
@@ -60,5 +87,58 @@ class Menu extends Model
     public function setTargetAttribute($value)
     {
         $this->attributes['target'] = ($value == '_self') ? 0 : 1;
+    }
+
+    /**
+     * getStatusIsVisibleAttribute
+     *
+     * @return void
+     */
+    public function getStatusIsVisibleAttribute()
+    {
+        $checkPeriodEnd = $this->attributes['period_to'] ?? '9999-12-31 23:59:59';
+        $periodStart = Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['period_from']);
+        $periodEnd = Carbon::createFromFormat('Y-m-d H:i:s', $checkPeriodEnd);
+        $periodCheck = Carbon::now()->between($periodStart, $periodEnd);
+        $isVisible = $this->attributes['is_visible'];
+        $result = false;
+        if ($periodCheck && $isVisible) {
+            $result = true;
+        }
+
+        return $result;
+    }
+
+    /**
+     * getUploadDiskAttribute
+     *
+     * @return void
+     */
+    public function getUploadDiskAttribute()
+    {
+        return $this->uploadDisk;
+    }
+
+    /**
+     * getRootDirAttribute
+     *
+     * @return void
+     */
+    public function getImageRootDirAttribute()
+    {
+        return $this->imageRootDir;
+    }
+
+    /**
+     * getFileUrlAttribute
+     *
+     * @return void
+     */
+    public function getImageFileUrlAttribute()
+    {
+        if ($this->background_image) {
+            return $this->upload_disk->url($this->image_root_dir . '/' . $this->background_image);
+        }
+        return Facade::noImage();
     }
 }

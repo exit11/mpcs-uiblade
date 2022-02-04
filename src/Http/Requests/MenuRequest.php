@@ -22,10 +22,12 @@ class MenuRequest extends FormRequest
 
         $rules = [
             'POST' => [
+                'period_from' => 'required',
                 'name' => 'required|max:255',
                 'description' => 'max:512',
             ],
             'PUT' => [
+                'period_from' => 'required',
                 'name' => 'sometimes|required|max:255',
                 'description' => 'max:512',
             ],
