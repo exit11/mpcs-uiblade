@@ -30,7 +30,6 @@ class UiBladeServiceProvider extends ServiceProvider
         /* 콘솔에서 vendor:publish 가동시 설치 파일 */
         if ($this->app->runningInConsole()) {
             $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
-            $this->publishes([__DIR__ . '/../config' => config_path()], 'config');
         }
 
         /* 라우터, 다국어 */
@@ -49,6 +48,9 @@ class UiBladeServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // config
+        $this->mergeConfigFrom(__DIR__ . '/../config/mpcsuiblade.php', 'mpcsuiblade');
+
         $this->commands($this->commands);
         $this->registerEloquentFactoriesFrom(__DIR__ . '/../database/factories');
         $this->app->bind('Exit11\UiBlade\Repositories\MenuRepositoryInterface', 'Exit11\UiBlade\Repositories\MenuRepository');
